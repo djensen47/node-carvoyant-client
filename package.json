@@ -1,0 +1,19 @@
+{
+  "name": "node-carvoyant",
+  "version": "0.1.0",
+  "description": "Node.js client for the Carvoyant API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:build47/node-carvoyant.git"
+  },
+  "author": "Dave Jensen <david@jensen47.com> (http://www.build47.com/)",
+  "license": "Copyright 2013 by David Jensen",
+  "dependencies": {
+    "superagent": "~0.15.7",
+    "coffee-script": "~1.6.3"
+  }
+}
