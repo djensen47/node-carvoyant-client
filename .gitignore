@@ -1,0 +1,5 @@
+node_modules
+*.swp
+*.pid
+npm-debug.log
+pids
