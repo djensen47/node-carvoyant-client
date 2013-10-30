@@ -1,4 +1,4 @@
-request = require("superagent")
+request = require("request")
 
 url = "https://dash.carvoyant.com/api"
 
@@ -6,10 +6,14 @@ class CarvoyantClient
   constructor: (@apiKey, @securityToken) ->
 
   _get: (uri, cb) ->
-    request.get(url+uri)
-      .auth(@apiKey, @securityToken)
-      .end (err, res) ->
-        cb(err, res)
+    options =
+      auth:
+        user: @apiKey
+        password: @securityToken
+        sendImmediately: false
+      json: true
+    request.get url+uri, options, (err, res, body) ->
+      cb(err, res)
 
 
   listVehicles: (options, cb) ->
@@ -21,12 +25,18 @@ class CarvoyantClient
     {} = options
     this._get "/vehicle/#{id}", (err, res) ->
       cb(err, res.body)
+  
+  # Not implemented
+  createVehicle: () ->
+    cb(null, null)
 
-  createVehicle: () -> 
-
+  # Not implemented
   listTrips: (id, options, cb) ->
+    cb(null, null)
 
+  # Not implemented
   rawData: (id, options, cb) ->
+    cb(null, null)
       
 
 
