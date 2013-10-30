@@ -15,7 +15,9 @@
   "license": "Copyright 2013 by David Jensen",
   "dependencies": {
     "superagent": "~0.15.7",
-    "coffee-script": "~1.6.3"
+    "coffee-script": "~1.6.3",
+    "request": "~2.27.0",
+    "iced-coffee-script": "~1.6.3-g"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
