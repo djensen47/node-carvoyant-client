@@ -5,12 +5,13 @@ url = "https://dash.carvoyant.com/api"
 class CarvoyantClient
   constructor: (@apiKey, @securityToken) ->
 
-  _get: (uri, cb) ->
+  _get: (uri, query, cb) ->
     options =
       auth:
         user: @apiKey
         password: @securityToken
         sendImmediately: false
+      qs: query
       json: true
     request.get url+uri, options, (err, res, body) ->
       cb(err, res)
@@ -18,12 +19,12 @@ class CarvoyantClient
 
   listVehicles: (options, cb) ->
     {} = options
-    this._get "/vehicle", (err, res) ->
+    this._get "/vehicle", null, (err, res) ->
       cb(err, res.body)
 
   getVehicle: (id, options, cb) ->
     {} = options
-    this._get "/vehicle/#{id}", (err, res) ->
+    this._get "/vehicle/#{id}", null, (err, res) ->
       cb(err, res.body)
   
   # Not implemented
