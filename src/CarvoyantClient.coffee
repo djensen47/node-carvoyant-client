@@ -2,24 +2,51 @@ request = require("request")
 
 url = "https://dash.carvoyant.com/api"
 
-class CarvoyantClient
-  constructor: (@apiKey, @securityToken) ->
+class CarvoyantRequest
+  constructor: (@apiKey, @securityToken, @method, @uri) ->
+    @query = {}
+    this
 
-  _get: (uri, query, cb) ->
-    cb = query if query? and not cb? and typeof query is "function"
+  get: (@uri) ->
+    @method = "GET"
+    this
+
+  post: (@post) ->
+    @method = "POST"
+    this
+
+  param: (key, value) ->
+    @query[key] = value
+    this
+
+  key: (keyName) ->
+    @param("key", keyName)
+    this
+
+  mostRecentOnly: (bool) ->
+    @param("mostRecentOnly", bool)
+    this
+
+  sortOrder: (sortOrder) ->
+    @param("sortOrder", sortOrder)
+    this
+
+  exec: (cb) ->
     options =
+      uri: url+@uri
+      method: @method
       auth:
         user: @apiKey
         password: @securityToken
         sendImmediately: false
-      qs: query
+      qs: @query
       json: true
-    request.get url+uri, options, (err, res, body) ->
-      # console.log err
-      # console.log res
-      # console.log body
+    request options, (err, res, body) ->
       cb(err, res)
 
+
+class CarvoyantClient
+  constructor: (@apiKey, @securityToken) ->
 
   listVehicles: (options, cb) ->
     {} = options
