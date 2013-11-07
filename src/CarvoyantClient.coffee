@@ -39,9 +39,17 @@ class CarvoyantClient
     @_get "/vehicle/#{vid}/trip/#{tid}", (err, res) ->
       cb(err, res.body)
 
-  # Not implemented
+  # rawData
+  # =======
+  # *Parameters*
+  #  - *id* _String_ id of the vehicle
+  #  - *options* _Object_ parameters for the API call
+  #  - *cb* _Function_ callback when the request is complete
+  #    - *err*
+  #    - *res* 
   rawData: (id, options, cb) ->
-    cb(null, null)
+    @_get "/vehicle/#{vid}/data", (err, res) ->
+      cb(null, null)
  
   # Not implemented
   createVehicle: () ->
