@@ -12,8 +12,12 @@ dataKeys =
   ENGINE_SPEED: "GEN_RPM"
   FUEL_LEVEL: "GEN_FUELLEVEL"
   FUEL_RATE: "GEN_FUELRATE"
-  ENGINE_TEMPERATURE: "GEN_ENGINE_COOLANT_TEMP"
+  ENGINE_TEMP: "GEN_ENGINE_COOLANT_TEMP"
   MAX_SPEED: "GEN_SPEED"
+
+sortOrder =
+  ASCENDING: "asc"
+  DESCENDING: "desc"
 
 class CarvoyantRequest
   constructor: (@apiKey, @securityToken, @method, @uri) ->
@@ -38,6 +42,14 @@ class CarvoyantRequest
 
   sortOrder: (sortOrder) ->
     @query["sortOrder"] = sortOrder
+    this
+
+  searchLimit: (limit) ->
+    @query["searchLimit"] = limit
+    this
+
+  searchOffset: (offset) ->
+    @query["searchOffset"] = offset
     this
 
   exec: (cb) ->
@@ -81,3 +93,4 @@ class CarvoyantClient
 
 module.exports = CarvoyantClient
 module.exports.dataKeys = dataKeys
+module.exports.sortOrder = sortOrder
