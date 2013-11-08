@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:build47/node-carvoyant.git"
+    "url": "https://github.com/DrivenComputing/node-carvoyant-client.git"
   },
   "author": "Dave Jensen <david@jensen47.com> (http://www.build47.com/)",
   "license": "The MIT License, Copyright (c) 2013 by David Jensen",
