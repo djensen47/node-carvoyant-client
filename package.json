@@ -1,7 +1,7 @@
 {
   "name": "carvoyant-client",
   "version": "0.1.0",
-  "description": "Node.js client for the Carvoyant API",
+  "description": "Node.js client library for the Carvoyant API",
   "main": "lib/carvoyant.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
