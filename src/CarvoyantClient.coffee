@@ -28,20 +28,16 @@ class CarvoyantRequest
     @method = "POST"
     this
 
-  param: (key, value) ->
-    @query[key] = value
-    this
-
-  key: (keyName) ->
-    @param("key", keyName)
+  dataKey: (keyName) ->
+    @query["key"] = keyName
     this
 
   mostRecentOnly: (bool) ->
-    @param("mostRecentOnly", bool)
+    @query["mostRecentOnly"] = bool
     this
 
   sortOrder: (sortOrder) ->
-    @param("sortOrder", sortOrder)
+    @query["sortOrder"] = sortOrder
     this
 
   exec: (cb) ->
