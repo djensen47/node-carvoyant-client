@@ -2,6 +2,19 @@ request = require("request")
 
 url = "https://dash.carvoyant.com/api"
 
+dataKeys =
+  DIAGNOSTIC_TROUBLE_CODES: "GEN_DTC"
+  VOLTAGE: "GEN_VOLTAGE"
+  TRIP_MILEAGE: "GEN_TRIP_MILEALGE"
+  ODOMETER: "GEN_ODOMETER"
+  GPS_LOCATION: "GEN_WAYPOINT"
+  HEADING: "GEN_HEADING"
+  ENGINE_SPEED: "GEN_RPM"
+  FUEL_LEVEL: "GEN_FUELLEVEL"
+  FUEL_RATE: "GEN_FUELRATE"
+  ENGINE_TEMPERATURE: "GEN_ENGINE_COOLANT_TEMP"
+  MAX_SPEED: "GEN_SPEED"
+
 class CarvoyantRequest
   constructor: (@apiKey, @securityToken, @method, @uri) ->
     @query = {}
@@ -42,44 +55,33 @@ class CarvoyantRequest
       qs: @query
       json: true
     request options, (err, res, body) ->
-      cb(err, res)
+      cb(err, body)
 
 
 class CarvoyantClient
   constructor: (@apiKey, @securityToken) ->
 
-  listVehicles: (options, cb) ->
-    {} = options
-    @_get "/vehicle", {}, (err, res) ->
-      cb(err, res.body)
+  request: () ->
+    new CarvoyantRequest(@apiKey, @securityToken)
 
-  getVehicle: (id, options, cb) ->
-    {} = options
-    @_get "/vehicle/#{id}", (err, res) ->
-      cb(err, res.body)
+  listVehicles: () ->
+    @request().get("/vehicle")
+
+  getVehicle: (id) ->
+    @request().get("/vehicle/#{id}")
   
-  listTrips: (id, options, cb) ->
-    @_get "/vehicle/#{id}/trip", (err, res) ->
-      cb(err, res.body)
+  listTrips: (id) ->
+    @request().get("/vehicle/#{id}/trip")
 
-  getTrip: (vid, tid, options, cb) ->
-    @_get "/vehicle/#{vid}/trip/#{tid}", (err, res) ->
-      cb(err, res.body)
+  getTrip: (vid, tid) ->
+    @request().get("/vehicle/#{vid}/trip/#{tid}")
 
-  # rawData
-  # =======
-  # *Parameters*
-  #  - *id* _String_ id of the vehicle
-  #  - *options* _Object_ parameters for the API call
-  #  - *cb* _Function_ callback when the request is complete
-  #    - *err*
-  #    - *res* 
-  rawData: (id, options, cb) ->
-    @_get "/vehicle/#{vid}/data", (err, res) ->
-      cb(null, null)
+  rawData: (id) ->
+    @request().get("/vehicle/#{vid}/data")
  
   # Not implemented
   createVehicle: () ->
     cb(null, null)
 
 module.exports = CarvoyantClient
+module.exports.dataKeys = dataKeys
