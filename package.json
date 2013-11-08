@@ -1,5 +1,5 @@
 {
-  "name": "node-carvoyant",
+  "name": "carvoyant-client",
   "version": "0.1.0",
   "description": "Node.js client for the Carvoyant API",
   "main": "lib/carvoyant.js",
