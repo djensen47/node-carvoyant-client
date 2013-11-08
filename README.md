@@ -2,6 +2,9 @@
 
 A node.js client library for the Carvoyant API.
 
+ - http://carvoyant.com
+ - http://confluence.carvoyant.com/display/PUBDEV/Home
+
 ## Installation
 
    $ npm install carvoyant-client
