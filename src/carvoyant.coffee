@@ -84,7 +84,7 @@ class CarvoyantClient
   getTrip: (vid, tid) ->
     @request().get("/vehicle/#{vid}/trip/#{tid}")
 
-  rawData: (id) ->
+  rawData: (vid) ->
     @request().get("/vehicle/#{vid}/data")
  
   # Not implemented
