@@ -2,7 +2,7 @@
   "name": "node-carvoyant",
   "version": "0.1.0",
   "description": "Node.js client for the Carvoyant API",
-  "main": "index.js",
+  "main": "lib/carvoyant.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "node_modules/.bin/grunt coffee"
@@ -12,7 +12,7 @@
     "url": "git@bitbucket.org:build47/node-carvoyant.git"
   },
   "author": "Dave Jensen <david@jensen47.com> (http://www.build47.com/)",
-  "license": "Copyright 2013 by David Jensen",
+  "license": "The MIT License, Copyright (c) 2013 by David Jensen",
   "dependencies": {
     "superagent": "~0.15.7",
     "coffee-script": "~1.6.3",
